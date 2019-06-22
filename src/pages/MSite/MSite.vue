@@ -1,17 +1,13 @@
 <template>
   <section class="msite">
-    <!--首页顶部-->
-    <header class="header">
-      <span class="header_search">
+    <HeaderTop title="昌平区北七家宏福科技园">
+      <span class="header_search" slot="left">
         <i class="iconfont icon-pro-search"></i>
       </span>
-      <span class="header_title ellipsis">
-        <span class="header_title_text">昌平区北七家宏福知疼着热地园(337省道北)</span>
-      </span>
-      <span class="header_login">
+      <span class="header_login" slot="right">
         <span class="header_login_text">登录|注册</span>
       </span>
-    </header>
+    </HeaderTop>
     <!--首页导航-->
     <nav class="msite_nav">
       <div class="swiper-container">
@@ -308,18 +304,20 @@
 </template>
 
 <script>
-  export default {}
+  import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
+  export default {
+    components:{
+      HeaderTop
+    }
+  }
 </script>
 
-<style scoped>
+<style>
   /*顶部*/
   .msite{width:100%;background:#fff;}
-  .header{background-color:#02a774;position:fixed;z-index:100;left:0;top:0;width:100%;height:45px;line-height:45px;color:#fff;}
-  .header_search{width:10%;float:left;text-align:center;}
+  .header_search{width:20%;float:left;text-align:left;}
   .header_search .iconfont{font-size:20px;}
-  .header_title{width:66%;float:left;margin:0 2%;}
-  .header_title_text{font-size:14px;width:100%;}
-  .header_login{width:20%;float:right;font-size:14px;text-align:center;}
+  .header_login{width:20%;float:right;font-size:14px;text-align:right;}
   /*滚动菜单*/
   .msite_nav{margin-top:45px;box-shadow:0 0 2px #ccc;padding:5px 0;}
   .swiper-slide{display:flex;flex-wrap:wrap;}
@@ -330,6 +328,7 @@
   .shop_header .iconfont{font-size:20px;color:#02a774;}
   .shop_header_title{position:relative;top:-3px;color:#555;font-size:14px;}
   /*商家列表*/
+  .shop_container{padding-bottom:50px;}
   .shop_li{font-size:13px;color:#666;padding:15px 0;}
   .shop_flex{display:flex;}
   .shop_left{width:15%;}

@@ -1,10 +1,6 @@
 <template>
   <section class="profile">
-    <header class="header">
-      <a class="header_title">
-        <span class="header_title_text">我的</span>
-      </a>
-    </header>
+    <HeaderTop title="我的"></HeaderTop>
     <section class="profile-number">
       <a href="javascript:" class="profile-link">
         <div class="profile_image">
@@ -88,13 +84,15 @@
 </template>
 
 <script>
-    export default {}
+    import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
+    export default {
+      components:{
+        HeaderTop
+      }
+    }
 </script>
 
 <style>
-  .header{background-color:#02a774;position:fixed;z-index:100;left:0;top:0;width:100%;height:45px;line-height:45px;color:#fff;}
-  .header_title{width:100%;}
-  .header_title_text{font-size:14px;width:100%;display:block;text-align:center;font-weight:bold;font-size:20px;}
   .profile-number{background:#02a774;color:#fff;margin-top:46px;padding:15px;}
   .profile-link{color:#fff;display:flex;align-items: center;}
   .profile_image{width:15%;}
