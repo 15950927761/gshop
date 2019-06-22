@@ -329,7 +329,7 @@
   .shop_header_title{position:relative;top:-3px;color:#555;font-size:14px;}
   /*商家列表*/
   .shop_container{padding-bottom:50px;}
-  .shop_li{font-size:13px;color:#666;padding:15px 0;}
+  .shop_li{font-size:12px;color:#666;padding:15px 0;}
   .shop_flex{display:flex;}
   .shop_left{width:15%;}
   .shop_right{width:62%;margin-left:3%;}
