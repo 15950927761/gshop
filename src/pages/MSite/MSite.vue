@@ -1,11 +1,11 @@
 <template>
   <section class="msite">
-    <HeaderTop title="昌平区北七家宏福科技园">
+    <HeaderTop title="昌平区北七家宏福科技园1区">
       <span class="header_search" slot="left">
         <i class="iconfont icon-pro-search"></i>
       </span>
       <span class="header_login" slot="right">
-        <span class="header_login_text">登录|注册</span>
+        <span class="header_login_text">登录1|注册</span>
       </span>
     </HeaderTop>
     <!--首页导航-->
