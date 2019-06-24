@@ -2,7 +2,7 @@
   <section class="profile">
     <HeaderTop title="我的"></HeaderTop>
     <section class="profile-number">
-      <a href="javascript:" class="profile-link">
+      <router-link to="/login" class="profile-link">
         <div class="profile_image">
           <i class="iconfont icon-touxiang"></i>
         </div>
@@ -18,7 +18,7 @@
             <i class="iconfont icon-jiantou"></i>
           </span>
         </div>
-      </a>
+      </router-link>
     </section>
     <section class="profile-content">
       <div class="profile-box">
