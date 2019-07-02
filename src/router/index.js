@@ -9,6 +9,8 @@ import Login from '../pages/Login/Login.vue'
 
 //声明使用插件
 Vue.use(VueRouter)
+
+
 export default new VueRouter({
   //所有路由
   routes:[
