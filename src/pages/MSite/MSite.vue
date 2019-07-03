@@ -1,6 +1,6 @@
 <template>
   <section class="msite">
-    <HeaderTop title="昌平区北七家宏福科技园1区">
+    <HeaderTop :title="address.name">
       <span class="header_search" slot="left">
         <i class="iconfont icon-pro-search"></i>
       </span>
@@ -11,104 +11,12 @@
     <!--首页导航-->
     <nav class="msite_nav">
       <swiper class="swiper-container" :options="swiperOption">
-          <swiper-slide class="swiper-slide">
-            <a href="javascript:" class="link_to_food">
+          <swiper-slide class="swiper-slide" v-for="(categorys,index) in categorysArr" :key="index">
+            <a href="javascript:" class="link_to_food" v-for="(category,index) in categorys" :key="index">
               <div class="food_container">
-                <img src="./images/nav/icon1.jpg">
+                <img :src="baseImageUrl+category.image_url">
               </div>
-              <span>美食</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon2.jpg">
-              </div>
-              <span>甜品饮品</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon3.jpg">
-              </div>
-              <span>商品超市</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon4.jpg">
-              </div>
-              <span>预订早餐</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon5.jpg">
-              </div>
-              <span>土豪推荐</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon6.jpg">
-              </div>
-              <span>鲜花蛋糕</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon7.jpg">
-              </div>
-              <span>汉堡炸鸡</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon8.jpg">
-              </div>
-              <span>日韩料理</span>
-            </a>
-          </swiper-slide>
-          <swiper-slide class="swiper-slide">
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon9.jpg">
-              </div>
-              <span>美食</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon10.jpg">
-              </div>
-              <span>甜品饮品</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon11.jpg">
-              </div>
-              <span>商品超市</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon12.jpg">
-              </div>
-              <span>预订早餐</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon13.jpg">
-              </div>
-              <span>土豪推荐</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon14.jpg">
-              </div>
-              <span>鲜花蛋糕</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon15.jpg">
-              </div>
-              <span>汉堡炸鸡</span>
-            </a>
-            <a href="javascript:" class="link_to_food">
-              <div class="food_container">
-                <img src="./images/nav/icon16.jpg">
-              </div>
-              <span>日韩料理</span>
+              <span>{{category.title}}</span>
             </a>
           </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
@@ -128,9 +36,15 @@
 <script>
   import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
   import ShopList from '../../components/ShopList/ShopList.vue'
+  import {mapState} from 'vuex'
   export default {
+    mounted(){
+      this.$store.dispatch('getCategorys')
+    },
+
     data() {
       return {
+        baseImageUrl:'https://fuss10.elemecdn.com',
         swiperOption: {
           autoplay: 3000,  //l轮播间隔时间
           loop: true,　　//是否自动轮播
@@ -139,6 +53,34 @@
           }, //轮播图中下标点显示
           paginationClickable :true　　 //轮播图中下标点显示
         }
+      }
+    },
+    computed:{
+      ...mapState(['address','categorys']),
+      //根据categorys一维数组生成一个2维数组
+      categorysArr(){
+        const {categorys} = this
+        //准备空的2维数组
+        const arr = []
+        //准备小数组，最大长度为8，并不代表一定是8
+        let minArr = []
+        categorys.forEach(item=>{
+
+          //如果当前小数组 已经满了，创建一个新的
+          if(minArr.length === 8){
+            minArr = []
+          }
+
+          //如果minArr是空的，将小数组保存到大数组中
+          if(minArr.length === 0){
+            arr.push(minArr)
+          }
+
+          //将当前分类保存到小数组中
+          minArr.push(item)
+
+        })
+        return arr
       }
     },
     components:{
