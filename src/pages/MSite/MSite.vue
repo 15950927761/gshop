@@ -28,7 +28,7 @@
         <i class="iconfont icon-icon--"></i>
         <span>商铺列表</span>
       </div>
-      <ShopList/>
+      <ShopList :geohash="gehash"/>
     </div>
   </section>
 </template>
@@ -39,11 +39,12 @@
   import {mapState} from 'vuex'
   export default {
     mounted(){
-      this.$store.dispatch('getCategorys')
+      this.$store.dispatch('getCategorys');
     },
 
     data() {
       return {
+        gehash:'31.22299,121.36025',
         baseImageUrl:'https://fuss10.elemecdn.com',
         swiperOption: {
           autoplay: 3000,  //l轮播间隔时间
@@ -108,6 +109,7 @@
   .shop_container{padding-bottom:50px;width:96%;margin:0 auto;}
   .shop_detail_header span{background:#02a774;color:#fff;padding:2px 5px; border-radius:2px;margin-right:5px;}
   .shop_detail_header h2{color:#333;font-size:18px;}
-  .shop_icon span{border:1px solid #eee;color:#999;text-align:center;width:15px;height:15px;line-height:15px;display:inline-block;}
+  .shop_icon{display:flex;}
+  .shop_icon span{border:1px solid #eee;color:#999;text-align:center;width:15px;height:15px;line-height:15px;display:inline-block;margin:0 2px;}
   .shop_icon2 span{color:#02a774;}
 </style>

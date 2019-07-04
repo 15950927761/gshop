@@ -1,227 +1,29 @@
 <template>
   <div>
     <ul class="shop_list">
-      <li class="shop_li">
+      <li class="shop_li" v-for="(shop,index) in shops" :key="index">
         <a class="shop_flex">
           <div class="shop_left">
-            <img src="./images/shop/shop1.jpg" class="shop_img">
+            <img :src="shop.image_path" class="shop_img">
           </div>
           <div class="shop_right">
             <section class="shop_detail_header">
               <span>品牌</span>
-              <h2>肯德基</h2>
+              <h2>{{shop.name}}</h2>
             </section>
             <section class="shop_star">
               <span></span>
-              <div>月售106单</div>
+              <div>月售{{shop.recent_order_num}}单</div>
             </section>
             <section class="shop-bottom">
-              ￥20起送/配送费约5元
+              ￥{{shop.float_minimum_order_amount}}起送/配送费约{{shop.float_delivery_fee}}元
             </section>
           </div>
           <div class="shop-ps">
             <div class="shop_icon">
-              <span>保</span>
-              <span>准</span>
-              <span>票</span>
+              <span v-for="(item,index) in shop.supports" :key="index">{{item.icon_name}}</span>
             </div>
-            <div class="shop_icon2"><span>硅谷专送</span></div>
-          </div>
-        </a>
-      </li>
-      <li class="shop_li">
-        <a class="shop_flex">
-          <div class="shop_left">
-            <img src="./images/shop/shop2.jpg" class="shop_img">
-          </div>
-          <div class="shop_right">
-            <section class="shop_detail_header">
-              <span>品牌</span>
-              <h2>大娘水饺</h2>
-            </section>
-            <section class="shop_star">
-              <span></span>
-              <div>月售106单</div>
-            </section>
-            <section class="shop-bottom">
-              ￥20起送/配送费约5元
-            </section>
-          </div>
-          <div class="shop-ps">
-            <div class="shop_icon">
-              <span>保</span>
-              <span>准</span>
-              <span>票</span>
-            </div>
-            <div class="shop_icon2"><span>硅谷专送</span></div>
-          </div>
-        </a>
-      </li>
-      <li class="shop_li">
-        <a class="shop_flex">
-          <div class="shop_left">
-            <img src="./images/shop/shop1.jpg" class="shop_img">
-          </div>
-          <div class="shop_right">
-            <section class="shop_detail_header">
-              <span>品牌</span>
-              <h2>肯德基</h2>
-            </section>
-            <section class="shop_star">
-              <span></span>
-              <div>月售106单</div>
-            </section>
-            <section class="shop-bottom">
-              ￥20起送/配送费约5元
-            </section>
-          </div>
-          <div class="shop-ps">
-            <div class="shop_icon">
-              <span>保</span>
-              <span>准</span>
-              <span>票</span>
-            </div>
-            <div class="shop_icon2"><span>硅谷专送</span></div>
-          </div>
-        </a>
-      </li>
-      <li class="shop_li">
-        <a class="shop_flex">
-          <div class="shop_left">
-            <img src="./images/shop/shop2.jpg" class="shop_img">
-          </div>
-          <div class="shop_right">
-            <section class="shop_detail_header">
-              <span>品牌</span>
-              <h2>大娘水饺</h2>
-            </section>
-            <section class="shop_star">
-              <span></span>
-              <div>月售106单</div>
-            </section>
-            <section class="shop-bottom">
-              ￥20起送/配送费约5元
-            </section>
-          </div>
-          <div class="shop-ps">
-            <div class="shop_icon">
-              <span>保</span>
-              <span>准</span>
-              <span>票</span>
-            </div>
-            <div class="shop_icon2"><span>硅谷专送</span></div>
-          </div>
-        </a>
-      </li>
-      <li class="shop_li">
-        <a class="shop_flex">
-          <div class="shop_left">
-            <img src="./images/shop/shop1.jpg" class="shop_img">
-          </div>
-          <div class="shop_right">
-            <section class="shop_detail_header">
-              <span>品牌</span>
-              <h2>肯德基</h2>
-            </section>
-            <section class="shop_star">
-              <span></span>
-              <div>月售106单</div>
-            </section>
-            <section class="shop-bottom">
-              ￥20起送/配送费约5元
-            </section>
-          </div>
-          <div class="shop-ps">
-            <div class="shop_icon">
-              <span>保</span>
-              <span>准</span>
-              <span>票</span>
-            </div>
-            <div class="shop_icon2"><span>硅谷专送</span></div>
-          </div>
-        </a>
-      </li>
-      <li class="shop_li">
-        <a class="shop_flex">
-          <div class="shop_left">
-            <img src="./images/shop/shop2.jpg" class="shop_img">
-          </div>
-          <div class="shop_right">
-            <section class="shop_detail_header">
-              <span>品牌</span>
-              <h2>大娘水饺</h2>
-            </section>
-            <section class="shop_star">
-              <span></span>
-              <div>月售106单</div>
-            </section>
-            <section class="shop-bottom">
-              ￥20起送/配送费约5元
-            </section>
-          </div>
-          <div class="shop-ps">
-            <div class="shop_icon">
-              <span>保</span>
-              <span>准</span>
-              <span>票</span>
-            </div>
-            <div class="shop_icon2"><span>硅谷专送</span></div>
-          </div>
-        </a>
-      </li>
-      <li class="shop_li">
-        <a class="shop_flex">
-          <div class="shop_left">
-            <img src="./images/shop/shop1.jpg" class="shop_img">
-          </div>
-          <div class="shop_right">
-            <section class="shop_detail_header">
-              <span>品牌</span>
-              <h2>肯德基</h2>
-            </section>
-            <section class="shop_star">
-              <span></span>
-              <div>月售106单</div>
-            </section>
-            <section class="shop-bottom">
-              ￥20起送/配送费约5元
-            </section>
-          </div>
-          <div class="shop-ps">
-            <div class="shop_icon">
-              <span>保</span>
-              <span>准</span>
-              <span>票</span>
-            </div>
-            <div class="shop_icon2"><span>硅谷专送</span></div>
-          </div>
-        </a>
-      </li>
-      <li class="shop_li">
-        <a class="shop_flex">
-          <div class="shop_left">
-            <img src="./images/shop/shop2.jpg" class="shop_img">
-          </div>
-          <div class="shop_right">
-            <section class="shop_detail_header">
-              <span>品牌</span>
-              <h2>大娘水饺</h2>
-            </section>
-            <section class="shop_star">
-              <span></span>
-              <div>月售106单</div>
-            </section>
-            <section class="shop-bottom">
-              ￥20起送/配送费约5元
-            </section>
-          </div>
-          <div class="shop-ps">
-            <div class="shop_icon">
-              <span>保</span>
-              <span>准</span>
-              <span>票</span>
-            </div>
-            <div class="shop_icon2"><span>硅谷专送</span></div>
+            <div class="shop_icon2"><span v-if="shop.delivery_mode.is_solid">{{shop.delivery_mode.text}}</span></div>
           </div>
         </a>
       </li>
@@ -230,8 +32,19 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
     export default {
-        name: "ShopList"
+      data(){
+         return{
+           // baseImageUrl:'/img/'
+         }
+      },
+      mounted() {
+        this.$store.dispatch('getShops')
+      },
+      computed:{
+        ...mapState(['shops'])
+      }
     }
 </script>
 

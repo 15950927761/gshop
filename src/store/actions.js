@@ -36,8 +36,8 @@ export default{
   //异步获取商家列表
   async getShops({commit,state}){
     //发送异步ajax请求
-    const {longitude,latitude} = state
-    const shops = await reqShops(longitude,latitude)
+    const {longitude,latitude,offset, restaurant_category_id = '', restaurant_category_ids = '', order_by = '', delivery_mode = '', support_ids = []} = state
+    const shops = await reqShops(longitude,latitude,offset, restaurant_category_id, restaurant_category_ids, order_by, delivery_mode, support_ids)
     //提交一个mutation
     // if(result.code === 0){
     //   const address = result.data
